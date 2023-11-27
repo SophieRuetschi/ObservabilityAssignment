@@ -1,3 +1,4 @@
+//index.js taken from sample code in assignment instructions
 const tracer = require("./tracing")("todo-service");
 const express = require("express");
 const { MongoClient } = require("mongodb");

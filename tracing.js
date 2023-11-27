@@ -1,3 +1,4 @@
+//tracing.js taken from sample code in assignment instructions
 const { Resource } = require("@opentelemetry/resources");
 const { SemanticResourceAttributes } = require("@opentelemetry/semantic-conventions");
 const { ConsoleSpanExporter } = require('@opentelemetry/sdk-trace-base');
@@ -11,18 +12,17 @@ const { HttpInstrumentation } = require("@opentelemetry/instrumentation-http");
 const { registerInstrumentations } = require("@opentelemetry/instrumentation");
 //Exporter
 const { JaegerExporter } = require("@opentelemetry/exporter-jaeger");
+//----------------these reference options were taken from: https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-exporter-jaeger
 const options = {
-    tags: [], // optional
-    // You can use the default UDPSender
-    host: 'localhost', // optional
-    port: 6832, // optional
-    // OR you can use the HTTPSender as follows
-    // endpoint: 'http://localhost:14268/api/traces',
-    maxPacketSize: 65000 // optional
+    tags: [], 
+    host: 'localhost',
+    port: 6832, 
+    maxPacketSize: 65000
   }
+//---------------------------------------------------------------------- 
 
 module.exports = (serviceName) => {
-   const exporter = new JaegerExporter(options);
+   const exporter = new JaegerExporter(options); //updated exporter
    const provider = new NodeTracerProvider({
        resource: new Resource({
            [SemanticResourceAttributes.SERVICE_NAME]: serviceName,
