@@ -12,7 +12,7 @@ const { HttpInstrumentation } = require("@opentelemetry/instrumentation-http");
 const { registerInstrumentations } = require("@opentelemetry/instrumentation");
 //Exporter
 const { JaegerExporter } = require("@opentelemetry/exporter-jaeger");
-//----------------these reference options were taken from: https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-exporter-jaeger
+//----------------option definition was taken from Jaeger doccumentation: https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-exporter-jaeger
 const options = {
     tags: [], 
     host: 'localhost',
